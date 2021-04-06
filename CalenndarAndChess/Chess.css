@@ -1,0 +1,16 @@
+table{
+    width: 50% ;
+    height: 50%;
+}
+th,td{
+    padding: 20px;
+}
+.white{
+    background-color: black;
+}
+.black{
+    background-color: white;
+}
+.orange{
+    background-color: darkorange;
+}
