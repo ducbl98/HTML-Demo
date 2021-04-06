@@ -1,0 +1,38 @@
+table {
+    width: 50%;
+    border-collapse: collapse;
+}
+h1{
+    text-align: center;
+    font-family: monospace,Vn;
+    color: blue;
+}
+.th3{
+    border: 1px solid black;
+}
+th{
+    font-family: 'Patua One',cursive;
+    font-size: 16px;
+    font-weight:400;
+    text-align: center;
+    padding: 5px;
+    background-color:yellow;
+}
+td {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 200;
+    font-size: 13px;
+    text-align: left;
+}
+.th1{
+    background-color: darkorange;
+}
+.th2{
+    background-color: white;
+}
+.table1{
+    border: 1px solid black;
+}
+.right-align{
+    text-align: right;
+}
