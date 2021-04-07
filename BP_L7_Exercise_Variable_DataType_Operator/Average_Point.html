@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Learn Result</h1><br>
+<h2>Average Point :
+    <p id="ap"></p></h2>
+<br>
+<h2>Sumary :
+    <p id="su"></p></h2>
+<script>
+    let pp = +prompt("Insert Physics Point : ")
+    let cp = +prompt("Insert Chemistry Point : ")
+    let bp = +prompt("Insert biology Point : ")
+    ap = (pp + cp + bp) / 3;
+    su = (pp + cp + bp);
+    document.getElementById("ap").innerHTML = ap;
+    document.getElementById("su").innerHTML = su;
+</script>
+</body>
+</html>

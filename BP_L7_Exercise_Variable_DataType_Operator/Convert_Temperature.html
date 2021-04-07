@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Convert Temperature</h1><br>
+<input id="nb" type="number" min="0" placeholder="Insert"> from
+<select id="1">
+    <option value="°C">°C</option>
+    <option value="°F">°F</option>
+</select> to
+<select id="2">
+    <option value="°C">°C</option>
+    <option value="°F">°F</option>
+</select>
+<button onclick="convertTemperature()">Convert</button>
+<br>
+<p>Convetible Temparature is :<p id="CT"></p></p>
+<script>
+    function convertTemperature() {
+        let nb = document.getElementById("nb").value
+        let type1 = document.getElementById("1").value
+        let type2 = document.getElementById("2").value
+        let cv1
+        if (type1 == type2) {
+            document.getElementById("CT").innerHTML = nb + type1;
+        } else {
+            if (type1 == "°C") {
+                cv1 = nb * 9 / 5 + 32;
+                document.getElementById("CT").innerHTML = cv1 + type2;
+            } else {
+                cv1 = (nb - 32) * 5 / 9;
+                document.getElementById("CT").innerHTML = cv1 + type1;
+            }
+        }
+    }
+</script>
+</body>
+</html>

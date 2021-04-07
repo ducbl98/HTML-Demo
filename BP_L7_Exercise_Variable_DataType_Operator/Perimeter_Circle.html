@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Calculate Area of square of circle></h1>
+Input radius <input type="number" id="radius" min="0" placeholder="Insert Radius"><br>
+<button onclick="calPer()">Cal Perimeter</button>
+<p id="area"></p>
+<script>
+    function calPer() {
+        const PI = 3.1416;
+        let ra = document.getElementById("radius").value;
+        per = PI * 2 * ra;
+        document.getElementById("area").innerHTML = per;
+    }
+</script>
+</body>
+</html>
