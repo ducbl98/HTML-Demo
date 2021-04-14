@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="result"></p>
+</body>
+<script>
+    let num = +prompt("Input Number")
+    if (num != -1) {
+        alert(num)
+    }
+    let total = 0
+    while (num != -1) {
+        total += num;
+        num = +prompt("Enter A Number")
+        alert(num);
+        document.getElementById("result").innerHTML = "Sum Number String Is " + total;
+    }
+</script>
+</html>

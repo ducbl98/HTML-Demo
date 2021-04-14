@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Input Age<input type="number" id="a"></h1>
+<button onclick="checkAge()">Check</button>
+<p id="result"></p>
+</body>
+<script>
+    function checkAge() {
+        let age = document.getElementById("a").value;
+        if(age<14){
+            document.getElementById("result").innerHTML = "He is not qualified "
+        }else {
+            document.getElementById("result").innerHTML = "He is qualified"
+        }
+    }
+</script>
+</html>

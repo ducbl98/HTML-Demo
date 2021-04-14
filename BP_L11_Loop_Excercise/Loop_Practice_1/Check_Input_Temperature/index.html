@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+<script>
+    let t
+    do {
+        t = +prompt("Input Temperature ")
+        if (t<20){
+            alert("The temperature is too low , increase the temperature")
+        }
+        if (t>100){
+            alert("The temperature is too high , decrease the temperature")
+        }
+    }while (t>100||t<20)
+    document.write("The temperature is "+t+" °C")
+</script>
+</html>

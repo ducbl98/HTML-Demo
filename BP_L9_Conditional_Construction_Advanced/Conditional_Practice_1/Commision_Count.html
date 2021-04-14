@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Commission Count</h2>
+</body>
+<script>
+    let s = +prompt("Input sales")
+    let com
+    if (s<5000){
+        com = s *10000
+    }else {
+        com = 10000*5000 +(s-5000)*20000
+    }
+    alert("Commission is "+ com +"VND")
+</script>
+</html>

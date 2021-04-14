@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+<script>
+    let a
+    do {
+        a = +prompt("Input factor a ")
+    } while (a == 0)
+    let b = +prompt("Input factor b ")
+    let c = +prompt("Input factor c ")
+    delta = Math.pow(b, 2) - 4 * a * c
+    if (delta < 0) {
+        alert("Equation has no solution")
+    } else if (delta == 0) {
+        let x12 = -b / (2 * a)
+        alert("Equations have double solutions is x1 = x2 = " + x12)
+    } else {
+        let x1 = (-b + Math.sqrt(delta)) / (2 * a)
+        let x2 = (-b - Math.sqrt(delta)) / (2 * a)
+        alert("Equations have two solutions is x1 = " + x1 + " and x2 = " + x2)
+    }
+</script>
+</html>

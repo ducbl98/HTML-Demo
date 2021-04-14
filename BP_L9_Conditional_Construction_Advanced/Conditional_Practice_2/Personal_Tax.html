@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let income = +prompt("Input Your Income ")
+    if (income < 10000000) {
+        alert("Your Tax Is " + income * 5 / 100)
+    } else {
+        alert("Your Tax Is " + (200000 + (income - 10000000) * 10 / 100))
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2 id="number"></h2>
+</body>
+<script>
+    let n = +prompt("Input Number ")
+    let result = factorialize(n)
+    document.getElementById("number").innerHTML = n + "! = " + result
+
+    function factorialize(n) {
+        let result=n
+        if (n === 0 || n === 1) {
+            result = 1
+        }
+        while (n > 1) {
+            n--
+            result *= n;
+        }
+        return result
+    }
+</script>
+</html>

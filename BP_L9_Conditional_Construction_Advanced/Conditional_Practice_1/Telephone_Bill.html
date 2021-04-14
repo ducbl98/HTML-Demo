@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Telephone Bill</h2>
+</body>
+<script>
+    let minute = +prompt("Input minute")
+    if (minute<50){
+        tc = minute *10000
+    }else {
+        tc = 10000*50 +(minute-50)*5000
+    }
+    alert("Telephone charge is "+ tc +"VND")
+</script>
+</html>

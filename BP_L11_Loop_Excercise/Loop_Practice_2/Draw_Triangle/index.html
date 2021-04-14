@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+<script>
+    let n = +prompt("Input The Max Asterisk ")
+    let number = +prompt("Input The Way You Want To Draw ")
+    chooseWayToDraw(n,number)
+
+    function chooseWayToDraw(n, number) {
+        switch (number){
+            case 1 :
+                drawLeftPyramid(n)
+                break;
+            case 2 :
+                drawLeftInvertPyramid(n)
+                break;
+            case 3 :
+                drawRightPyramid(n)
+                break;
+            case 4 :
+                drawRightInvertPyramid(n)
+                break;
+        }
+    }
+
+    function drawLeftPyramid(n) {
+        for (let i = 1; i <= n; i++) {
+            for (let j = 1; j <= i; j++) {
+                document.write(" * ")
+            }
+            document.write("<br>")
+        }
+    }
+
+    function drawRightPyramid(n) {
+        for (let i = 1; i <= n; i++) {
+            let j
+            for (j = 1; j <= n - i; j++) {
+                document.write(" &#160&#160 ")
+            }
+            for (j = 1; j <= i; j++) {
+                document.write(" * ")
+            }
+            document.write("<br>")
+        }
+    }
+    function drawLeftInvertPyramid(n) {
+        for (let i = n; i >=1 ; i--) {
+            for (let j = 1; j <=i ; j++) {
+                document.write(" * ")
+            }
+            document.write("<br>")
+        }
+    }
+
+    function drawRightInvertPyramid(n) {
+        for (let i = n; i >=1 ; i--) {
+            let j
+            for (j = 1; j<=n-i ; j++) {
+                document.write(" &#160&#160 ")
+            }
+            for (j = 1; j<=i ; j++) {
+                document.write(" * ")
+            }
+            document.write("<br>")
+        }
+    }
+</script>
+</html>

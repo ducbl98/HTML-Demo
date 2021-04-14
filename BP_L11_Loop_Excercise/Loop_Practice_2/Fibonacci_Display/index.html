@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2 id="number"></h2>
+</body>
+<script>
+    function isFibonacci(n) {
+        let a = 0
+        let b = 1
+        let sum = 0
+        let check = false
+        if (n == 0) {
+            check = true
+        }
+        do {
+            sum = a + b;
+            if (sum == n) {
+                check = true
+            }
+            a = b;
+            b = sum;
+        } while (sum < n)
+        return check
+    }
+
+    let N = +prompt("Input The Number Fibonacci ")
+    let count = 0
+    let a = 0
+    do {
+        if (a == 1) {
+            document.write(a + "<br>")
+            count++
+        }
+        if (isFibonacci(a)) {
+            document.write(a + "<br>")
+            count++
+        }
+        a++
+    } while (count < N)
+    document.getElementById("number").innerHTML = "The First " + N + " Fibonacci Number Is"
+</script>
+</html>

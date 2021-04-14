@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<table>
+    <tr>
+        <td colspan="5"><input class="screen " id="output" placeholder="0" type="text" ></td>
+    </tr>
+    <tr>
+        <td><button onclick="outputWrite(7)">7</button></td>
+        <td><button onclick="outputWrite(8)">8</button></td>
+        <td><button onclick="outputWrite(9)">9</button></td>
+        <td><button onclick="outputWrite('+')">+</button></td>
+        <td><button onclick="clearNumber()">D</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="outputWrite(4)">4</button></td>
+        <td><button onclick="outputWrite(5)">5</button></td>
+        <td><button onclick="outputWrite(6)">6</button></td>
+        <td><button onclick="outputWrite('-')">-</button></td>
+        <td><button onclick="outputWrite('.')">.</button></td>
+    </tr>
+    <tr>
+        <td><button onclick="outputWrite(1)">7</button></td>
+        <td><button onclick="outputWrite(2)">8</button></td>
+        <td><button onclick="outputWrite(3)">3</button></td>
+        <td><button onclick="outputWrite('*')">*</button></td>
+        <td><button onclick="outputWrite('2.718281')">e</button></td>
+    </tr>    <tr>
+        <td><button onclick="outputDelete()">C</button></td>
+        <td><button onclick="outputWrite(0)">0</button></td>
+        <td><button onclick="calculate()">=</button></td>
+        <td><button onclick="outputWrite('/')">/</button></td>
+        <td><button onclick="outputWrite('3.141618')">pi</button></td>
+    </tr>
+</table>
+<script src="js/index.js"></script>
+</body>
+</html>

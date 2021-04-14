@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+<script>
+    let size = 10;
+
+    for (let x = 0; x < size; x++) {
+        for (let y = 0; y <= 4 * size; y++) {
+            let dist1 = Math.sqrt(Math.pow(x - size, 2) + Math.pow(y - size, 2));
+            let dist2 = Math.sqrt(Math.pow(x - size, 2) + Math.pow(y - 3 * size, 2));
+
+            if (dist1 < size + 0.5 || dist2 < size + 0.5)
+                document.write("*");
+            else
+                document.write("&#160&#160");
+        }
+        document.write("<br>");
+    }
+
+    for (let x = 1; x < 2 * size; x++) {
+        for (let y = 0; y < x; y++)
+            document.write("&#160&#160");
+
+        for (let y = 0; y < 4 * size + 1 - 2 * x; y++)
+            document.write("*");
+
+        document.write("<br>");
+    }
+
+</script>
+</html>

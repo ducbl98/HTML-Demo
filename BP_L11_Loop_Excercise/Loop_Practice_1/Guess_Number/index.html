@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="checkGuessNumber()">Play</button>
+<button onclick="replay()">Replay</button>
+</body>
+<script>
+    function replay(){
+        window.location.reload()
+    }
+    function getRandomNumber(max, min) {
+        min = Math.ceil(min)
+        max = Math.floor(max)
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    function checkGuessNumber() {
+        let max = +prompt("Input Max Number")
+        let min = +prompt("Input Min Number")
+        let ran = getRandomNumber(max, min)
+        let turn = +prompt("Input Number Of Turn")
+        let count = 0
+        while (count < turn) {
+            let guess = +prompt("Input Your Guess")
+            if (ran == guess) {
+                alert("Congratulation ! You 're right")
+                break;
+            } else {
+                count++
+                if (ran > guess) {
+                    alert("It is above ! Guess again")
+                    continue;
+                } else {
+                    alert("It is below ! Guess again")
+                    continue;
+                }
+            }
+        }
+
+    }
+</script>
+</html>
