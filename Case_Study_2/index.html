@@ -3,164 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body onload="displayResult()">
 <div id="Controller">
     <fieldset>
         <legend>Ping pong game</legend>
-        <button onclick="play()">Start</button>
-        <button onclick="location.reload()">Restart</button>
-        <button onclick="ruleDisplay()">Instruction</button>
+        <button class="orange" onclick="play()">Start</button>
+        <button class="orange" onclick="replay()">Restart</button>
+        <button class="orange" onclick="ruleDisplay()">Instruction</button>
         <p id="Previous-result"></p>
         <p id="rule1"></p>
         <p id="rule2"></p>
     </fieldset>
 </div>
 <div id="game">
-    <canvas width="1200" height="800" id="ping-pong" style="border: 1px solid brown"></canvas>
+    <canvas width="1200" height="800" id="ping-pong"
+            style="border: 1px solid brown ; background-image: url('images/img3.jpg')"></canvas>
 </div>
 </body>
-<script src="Ball.js"></script>
-<script src="Paddle.js"></script>
-<script>
-    let cvs = document.getElementById("ping-pong")
-    let ctx = cvs.getContext("2d")
-    const paddleWidth = cvs.width / 60;
-    const paddleHeight = cvs.height / 4;
-    const radiusBall = cvs.width/80
-    let ball = new Ball(cvs.width / 2, cvs.height / 2, radiusBall, 5, 5, 5, 'blue')
-    let user = new Paddle(0, cvs.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 'black')
-    let com = new Paddle(cvs.width - paddleWidth, cvs.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 'black')
-
-    function ruleDisplay() {
-        let rule1 = document.getElementById("rule1")
-        rule1.innerHTML = `Player left : Use W , S to move up , down`
-        let rule2 = document.getElementById("rule2")
-        rule2.innerHTML = `Player right : Use ▲ , ▼ S to move up , down`
-    }
-
-    function displayResult() {
-        let txt = document.getElementById("Previous-result")
-        txt.innerHTML = `Previous Result is ${loadScore1()} : ${loadScore2()}`
-    }
-
-    function saveScore1(score) {
-        localStorage.setItem('user', score);
-    }
-
-    function loadScore1() {
-        if (localStorage.hasOwnProperty('user')) {
-            return localStorage.getItem('user');
-        } else {
-            return 0;
-        }
-    }
-
-    function saveScore2(score) {
-        localStorage.setItem('com', score);
-    }
-
-    function loadScore2() {
-        if (localStorage.hasOwnProperty('com')) {
-            return localStorage.getItem('com');
-        } else {
-            return 0;
-        }
-    }
-
-    function drawRectangle(x, y, width, height, color) {
-        ctx.fillStyle = color
-        ctx.fillRect(x, y, width, height)
-    }
-
-    function drawNet() {
-        for (let i = 0; i < cvs.height; i += 15) {
-            drawRectangle(cvs.offsetWidth / 2 - 2 / 2, i, 2, 10, 'black')
-        }
-    }
-
-    function drawText(txt, x, y, color) {
-        ctx.fillStyle = color
-        ctx.font = "50px fantasy"
-        ctx.fillText(txt, x, y)
-    }
-
-    function play() {
-        function checkWin() {
-            if (user.score === 10) {
-                saveScore1(user.score)
-                saveScore2(com.score)
-                clearInterval(var1)
-                alert("User Win")
-            }
-            if (com.score === 10) {
-                saveScore1(user.score)
-                saveScore2(com.score)
-                clearInterval(var1)
-                alert("Computer Win")
-            }
-        }
-
-        function render() {
-            ball.clear()
-            let img1 = new Image();
-            img1.src = "images/img2.png"
-            ctx.drawImage(img1,0,0,cvs.width/2,cvs.height/2,0,cvs.height/3,cvs.width/2,cvs.height/2)
-            let img2 = new Image();
-            img2.src = "images/img1.png"
-            ctx.drawImage(img2,0,0,cvs.width/2,cvs.height/2,cvs.width/2,cvs.height/3,cvs.width/2,cvs.height/2)
-            user.draw()
-            com.draw()
-            drawNet()
-            ball.move()
-            ball.draw()
-            drawText(user.score, cvs.width / 4, cvs.height / 5, "#7701fd")
-            drawText(com.score, cvs.width * 3 / 4, cvs.height / 5, "#979a97")
-            if (ball.x - ball.radius <= 0) {
-                com.score++
-                ball.resetBall()
-            }
-            if (ball.x + ball.radius > cvs.width) {
-                user.score++
-                ball.resetBall()
-            }
-            let player = ball.x < cvs.width / 2 ? user : com
-            if (ball.collision(player)) {
-                let collidePoint = ball.y - (player.y + player.height / 2)
-                collidePoint = collidePoint / (player.height / 2)
-                let angleRad = (Math.PI / 4) * collidePoint
-                let direction = ball.x < cvs.width / 2 ? 1 : -1
-                ball.velocityX = direction * ball.speed * Math.cos(angleRad)
-                ball.velocityY = direction * ball.speed * Math.sin(angleRad)
-                ball.speed += 0.1
-            }
-            checkWin()
-        }
-
-
-        let var1 = setInterval(render, 20)
-        window.addEventListener('keydown', function (evt) {
-            // user.move(evt)
-            user.clear()
-            com.clear()
-            switch (evt.keyCode) {
-                case 38:
-                    user.moveUp()
-                    break
-                case 40:
-                    user.moveDown()
-                    break
-                case 83:
-                    com.moveDown()
-                    break
-                case 87:
-                    com.moveUp()
-                    break
-            }
-            user.draw()
-            com.draw()
-        })
-    }
-</script>
+<script src="js/Ball.js"></script>
+<script src="js/Paddle.js"></script>
+<script src="js/GamePlay.js"></script>
 </html>

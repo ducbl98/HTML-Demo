@@ -24,6 +24,7 @@ class Ball{
         this.x+=this.velocityX
         this.y+=this.velocityY
         if (this.y + this.radius >= cvs.height || this.y - this.radius <= 0) {
+            wallHitSound.play()
             this.velocityY = -this.velocityY
         }
     }
