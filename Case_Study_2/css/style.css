@@ -1,0 +1,21 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#Controller{
+    width: 20%;
+    height: 20%;
+}
+fieldset{
+    height: 150px;
+}
+legend{
+    font-size: 20px;
+}
+button{
+    width: 30%;
+    height: 20%;
+}
