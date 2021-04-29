@@ -1,3 +1,13 @@
+#Previous-time{
+    font-size: 20px;
+    color: #5eaaff;
+    font-family: monospace;
+}
+#Time-count{
+    font-size: 20px;
+    color: #ff1fd5;
+    font-family: VnAGOutline2;
+}
 body {
     width: 100vw;
     height: 100vh;
@@ -25,7 +35,7 @@ legend{
 }
 button{
     /*width: 30%;*/
-    height: 40%;
+    /*height: 40%;*/
     display: inline-block;
     outline: none;
     cursor: pointer;

@@ -44,8 +44,8 @@ class Ball{
     resetBall() {
         this.x = cvs.width / 2
         this.y = cvs.height / 2
+        this.speed = 7
         this.velocityX = -this.velocityX
         this.velocityY = -this.velocityY
-        this.speed = 5
     }
 }

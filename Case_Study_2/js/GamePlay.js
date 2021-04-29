@@ -6,7 +6,7 @@ let ctx = cvs.getContext("2d")
 const hitSound = new Audio('sounds/hitSound.wav')
 const scoreSound = new Audio('sounds/scoreSound.wav')
 const wallHitSound = new Audio('sounds/wallHitSound.wav')
-const winningSound = new Audio('sounds/winningSound.mp3')
+const winningSound = new Audio('sounds/winSound.wav')
 //add images
 let img1 = new Image()
 img1.src = "images/img2.png"
@@ -18,6 +18,7 @@ const framePerSecond = 50
 const paddleWidth = cvs.width / 60;
 const paddleHeight = cvs.height / 4;
 const radiusBall = cvs.width / 50
+let count =0
 let disableAILeft = true
 let disableAIRight = true
 let checkStart = true
@@ -37,6 +38,8 @@ function ruleDisplay() {
 function displayResult() {
     let txt = document.getElementById("Previous-result")
     txt.innerHTML = `Previous Result is ${loadScore1()} : ${loadScore2()}`
+    let txt2=document.getElementById("Previous-time")
+    txt2.innerHTML=`The Last Time Play is ${loadTime()}`
 }
 /*Local storage*/
 function saveScore1(score) {
@@ -62,6 +65,17 @@ function loadScore2() {
         return 0;
     }
 }
+function saveTime(time) {
+    localStorage.setItem('time', time);
+}
+
+function loadTime() {
+    if (localStorage.hasOwnProperty('time')) {
+        return localStorage.getItem('time');
+    } else {
+        return 0;
+    }
+}
 
 /*Draw Game Board*/
 function drawRectangle(x, y, width, height, color) {
@@ -77,7 +91,7 @@ function drawNet() {
 
 function drawText(txt, x, y, color) {
     ctx.fillStyle = color
-    ctx.font = "50px fantasy"
+    ctx.font = "75px fantasy"
     ctx.fillText(txt, x, y)
 }
 
@@ -86,12 +100,15 @@ function replay() {
         location.reload()
     }
 }
-
+function timeCount() {
+    count++
+    document.getElementById("Time-count").innerHTML= ` Time : ${count/framePerSecond}`
+}
 //Start Game
 function start() {
     let playAi = confirm("Do you want to play vs Ai ")
     if (playAi) {
-        let directionPlay = confirm("Do you want to play on the left or on the right ? Yes for left And No for right")
+        let directionPlay = confirm("Do you want to play on the left or on the right ? Yes for right And No for left")
         if (directionPlay) {
             disableAILeft = false
             user.status = true
@@ -116,7 +133,8 @@ function play() {
     //Check Win Condition
     function checkWin() {
         if (user.score === winScore) {
-            // winningSound.play()
+            saveTime(count/framePerSecond)
+            winningSound.play()
             saveScore1(user.score)
             saveScore2(com.score)
             clearInterval(var1)
@@ -124,7 +142,8 @@ function play() {
             location.reload()
         }
         if (com.score === winScore) {
-            // winningSound.play()
+            saveTime(count/framePerSecond)
+            winningSound.play()
             saveScore1(user.score)
             saveScore2(com.score)
             clearInterval(var1)
@@ -144,6 +163,7 @@ function play() {
 
     //Update GameBoard
     function render() {
+        timeCount()
         ball.clear()
         ctx.fillStyle = '#fdc601'
         drawRectangle(0, 0, cvs.width, cvs.height)
@@ -160,21 +180,13 @@ function play() {
         drawText(com.score, cvs.width * 3 / 4, cvs.height / 5, "#fd00b5")
         /*Score point*/
         if (ball.x - ball.radius <= 0) {
+            scoreSound.play()
             com.score++
-            if (com.score === winScore) {
-                winningSound.play()
-            } else {
-                scoreSound.play()
-            }
             ball.resetBall()
         }
         if (ball.x + ball.radius > cvs.width) {
+            scoreSound.play()
             user.score++
-            if (user.score === winScore) {
-                winningSound.play()
-            } else {
-                scoreSound.play()
-            }
             ball.resetBall()
         }
         /*Detect collision with paddle*/
@@ -187,10 +199,10 @@ function play() {
             let direction = ball.x < cvs.width / 2 ? 1 : -1
             ball.velocityX = direction * ball.speed * Math.cos(angleRad)
             ball.velocityY = direction * ball.speed * Math.sin(angleRad)
-            ball.speed += 1
+            ball.speed += 0.5
         }
         checkWin()
-    }
+        }
     //Game loop
     let var1 = setInterval(render, 1000 / framePerSecond)
 
