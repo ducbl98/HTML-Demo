@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Ping Pong Game</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body onload="displayResult()">
+<!--Controller Box-->
 <div id="Controller">
     <fieldset>
         <legend>Ping pong game</legend>
-        <button class="orange" onclick="play()">Start</button>
+        <button class="orange" onclick="start()">Start</button>
         <button class="orange" onclick="replay()">Restart</button>
         <button class="orange" onclick="ruleDisplay()">Instruction</button>
         <p id="Previous-result"></p>
@@ -17,6 +18,7 @@
         <p id="rule2"></p>
     </fieldset>
 </div>
+<!--Game Area-->
 <div id="game">
     <canvas width="1200" height="800" id="ping-pong"
             style="border: 1px solid brown ; background-image: url('images/img3.jpg')"></canvas>
